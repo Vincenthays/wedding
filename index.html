@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notre Mariage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-image: url('background.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+        .elegant-heading {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .backdrop-blur-glass {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+    <script src="//cdn.jsdelivr.net/npm/@tailwindcss/browser@4" defer></script>
+    <script src="script.js" defer></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center relative">
+    
+    <div class="relative z-10 text-center px-4 max-w-5xl">
+        <h1 class="elegant-heading text-7xl md:text-8xl text-white font-light mb-4 tracking-wide animate-fade-in" style="text-shadow: 2px 4px 8px rgba(0,0,0,0.4);">
+            Nous nous marions !
+        </h1>
+        
+        <div class="w-32 h-px bg-white mx-auto mb-8 opacity-70"></div>
+        
+        <p 
+            class="text-xl md:text-2xl text-white mb-4 font-light tracking-wider" 
+            style="text-shadow: 1px 2px 4px rgba(0,0,0,0.4);" 
+            x-data x-text="$store.wedding.dateText">
+        </p>
+        
+        <div class="backdrop-blur-glass rounded-2xl p-8 md:p-12 shadow-2xl mb-8 mx-auto max-w-3xl">
+            <div 
+                class="grid grid-cols-4 gap-4 md:gap-8"
+                x-data="{
+                    days: 0,
+                    hours: 0,
+                    minutes: 0,
+                    seconds: 0,
+                    updateCountdown() {
+                        const diff = $store.wedding.date - new Date().getTime();
+                        
+                        this.days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                        this.hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        this.minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                        this.seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                    },
+                    init() {
+                        this.updateCountdown();
+                        setInterval(() => this.updateCountdown(), 1000);
+                    }
+                }">
+                <div class="text-center">
+                    <div class="text-5xl md:text-6xl font-bold text-white mb-2 elegant-heading" x-text="days"></div>
+                    <div class="text-sm md:text-base text-white uppercase tracking-widest opacity-80">Jours</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl md:text-6xl font-bold text-white mb-2 elegant-heading" x-text="hours"></div>
+                    <div class="text-sm md:text-base text-white uppercase tracking-widest opacity-80">Heures</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl md:text-6xl font-bold text-white mb-2 elegant-heading" x-text="minutes"></div>
+                    <div class="text-sm md:text-base text-white uppercase tracking-widest opacity-80">Minutes</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl md:text-6xl font-bold text-white mb-2 elegant-heading" x-text="seconds"></div>
+                    <div class="text-sm md:text-base text-white uppercase tracking-widest opacity-80">Secondes</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
