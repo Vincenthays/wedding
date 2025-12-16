@@ -42,20 +42,26 @@
         <p 
             class="text-xl md:text-2xl text-white mb-4 font-light tracking-wider" 
             style="text-shadow: 1px 2px 4px rgba(0,0,0,0.4);" 
-            x-data x-text="$store.wedding.dateText">
+            x-text="date"
+            x-data="{
+                init() {
+                    const d = $store.params.date;
+                    const date = d.getDate();
+                    const month = d.toLocaleDateString('fr-FR', { month: 'long' });
+                    const year = d.getFullYear();
+                    const hours = d.getHours().toString().padStart(2, '0');
+                    const minutes = d.getMinutes().toString().padStart(2, '0');
+                    this.date = `${date} ${month} ${year} • ${hours}h${minutes}`;
+                }
+            }">
         </p>
         
         <div class="backdrop-blur-glass rounded-2xl p-8 md:p-12 shadow-2xl mb-8 mx-auto max-w-3xl">
             <div 
                 class="grid grid-cols-4 gap-4 md:gap-8"
                 x-data="{
-                    days: 0,
-                    hours: 0,
-                    minutes: 0,
-                    seconds: 0,
                     updateCountdown() {
-                        const diff = $store.wedding.date - new Date().getTime();
-                        
+                        const diff = $store.params.date.getTime() - new Date().getTime();
                         this.days = Math.floor(diff / (1000 * 60 * 60 * 24));
                         this.hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                         this.minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
