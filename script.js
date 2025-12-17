@@ -1,6 +1,5 @@
-const params = Object.fromEntries(new URLSearchParams(window.location.search));
-const date = new Date(parseInt(1000*params.t, 10));
+const params = JSON.parse(atob(window.location.search.substring(1)));
 
 document.addEventListener('alpine:init', () => {
-    Alpine.store('params', { ...params, date });
+    Alpine.store('params', { ...params, date: new Date(params.t) });
 });
