@@ -109,20 +109,137 @@
                         x-transition:leave-end="opacity-0 transform -translate-x-full absolute inset-0"
                         class="text-white space-y-6">
                         <div class="text-center">
-                            <h3 class="elegant-heading text-3xl md:text-4xl font-semibold mb-4">Détails de l'événement</h3>
+                            <h3 class="elegant-heading text-3xl md:text-4xl font-semibold mb-4">Programme</h3>
                             <div class="w-20 h-px bg-white mx-auto mb-6 opacity-50"></div>
                         </div>
-                        <div class="space-y-4 text-left md:text-center">
-                            <template x-for="(key, value) in $store.params.d">
-                                <div>
-                                    <p class="text-lg md:text-xl font-light tracking-wide opacity-90">
-                                        <span class="elegant-heading font-semibold" x-text="value"></span>
-                                        <span x-text="key"></span>
-                                    </p>
+                        <div class="space-y-6">
+                            <!-- Icônes avec descriptions -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+                                <!-- Église -->
+                                <div class="text-center space-y-3">
+                                    <div class="mx-auto max-w-[200px] flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-32 w-32 drop-shadow-lg" viewBox="0 0 64 64" fill="none" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                                            <!-- Croix ornée -->
+                                            <line x1="32" y1="1" x2="32" y2="10" stroke-width="1.8"/>
+                                            <line x1="29" y1="5" x2="35" y2="5" stroke-width="1.8"/>
+                                            <circle cx="32" cy="1" r="0.8" fill="white"/>
+                                            
+                                            <!-- Clocher élancé -->
+                                            <path d="M 29 10 Q 32 8 35 10 L 38 18 L 26 18 Z" fill="white" fill-opacity="0.25" stroke-width="1.2"/>
+                                            <rect x="26" y="18" width="12" height="10" rx="0.5" fill="white" fill-opacity="0.2"/>
+                                            
+                                            <!-- Fenêtre rosace du clocher -->
+                                            <circle cx="32" cy="22" r="2.5" fill="none" stroke="white" stroke-width="1"/>
+                                            <circle cx="32" cy="22" r="1" fill="white" fill-opacity="0.6"/>
+                                            <line x1="32" y1="19.5" x2="32" y2="24.5" stroke-width="0.5"/>
+                                            <line x1="29.5" y1="22" x2="34.5" y2="22" stroke-width="0.5"/>
+                                            
+                                            <!-- Toit principal avec pente douce -->
+                                            <path d="M 32 28 L 14 38 L 50 38 Z" fill="white" fill-opacity="0.2" stroke-width="1.2"/>
+                                            <line x1="32" y1="28" x2="32" y2="38" stroke-width="0.5" stroke-dasharray="1.5 1"/>
+                                            
+                                            <!-- Corps de l'église -->
+                                            <rect x="14" y="38" width="36" height="22" rx="0.5" fill="white" fill-opacity="0.15"/>
+                                            
+                                            <!-- Colonnes décoratives -->
+                                            <line x1="14" y1="38" x2="14" y2="60" stroke-width="1.5"/>
+                                            <line x1="50" y1="38" x2="50" y2="60" stroke-width="1.5"/>
+                                            
+                                            <!-- Grande porte arquée avec détails -->
+                                            <path d="M 27 46 Q 27 40 32 40 Q 37 40 37 46 L 37 60 L 27 60 Z" fill="white" fill-opacity="0.3"/>
+                                            <path d="M 27 46 Q 27 40 32 40 Q 37 40 37 46" fill="none" stroke-width="1.2"/>
+                                            <line x1="32" y1="40" x2="32" y2="60" stroke-width="0.5" opacity="0.6"/>
+                                            
+                                            <!-- Fenêtres latérales en ogive -->
+                                            <path d="M 18 44 Q 18 42 20 42 Q 22 42 22 44 L 22 50 L 18 50 Z" fill="white" fill-opacity="0.4"/>
+                                            <path d="M 42 44 Q 42 42 44 42 Q 46 42 46 44 L 46 50 L 42 50 Z" fill="white" fill-opacity="0.4"/>
+                                            
+                                            <!-- Ligne de sol -->
+                                            <line x1="10" y1="60" x2="54" y2="60" stroke-width="1.2"/>
+                                            
+                                            <!-- Petits ornements floraux -->
+                                            <circle cx="17" cy="36" r="0.8" fill="white" fill-opacity="0.5"/>
+                                            <circle cx="47" cy="36" r="0.8" fill="white" fill-opacity="0.5"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="elegant-heading text-2xl font-semibold mb-1">Cérémonie</p>
+                                        <p class="text-base md:text-lg font-light opacity-90">
+                                            Église Notre-Dame de Béon à 15h
+                                        </p>
+                                    </div>
                                 </div>
-                            </template>
-                            <div class="pt-4">
-                                <p class="text-base md:text-lg font-light italic opacity-80">
+                                
+                                <!-- Château -->
+                                <div class="text-center space-y-3">
+                                    <div class="mx-auto max-w-[200px] flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-32 w-32 drop-shadow-lg" viewBox="0 0 64 64" fill="none" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                                            <!-- Tour gauche -->
+                                            <rect x="6" y="22" width="10" height="38" rx="0.5" fill="white" fill-opacity="0.15"/>
+                                            <!-- Toit conique gauche -->
+                                            <path d="M 4 22 Q 11 6 18 22" fill="white" fill-opacity="0.25" stroke-width="1.2"/>
+                                            <!-- Ornement sommet gauche -->
+                                            <line x1="11" y1="6" x2="11" y2="3" stroke-width="1.5"/>
+                                            <circle cx="11" cy="2.5" r="1" fill="white" fill-opacity="0.7"/>
+                                            <!-- Fenêtres tour gauche -->
+                                            <path d="M 9 30 Q 9 28.5 11 28.5 Q 13 28.5 13 30 L 13 34 L 9 34 Z" fill="white" fill-opacity="0.35"/>
+                                            <path d="M 9 40 Q 9 38.5 11 38.5 Q 13 38.5 13 40 L 13 44 L 9 44 Z" fill="white" fill-opacity="0.35"/>
+                                            
+                                            <!-- Tour droite -->
+                                            <rect x="48" y="22" width="10" height="38" rx="0.5" fill="white" fill-opacity="0.15"/>
+                                            <!-- Toit conique droit -->
+                                            <path d="M 46 22 Q 53 6 60 22" fill="white" fill-opacity="0.25" stroke-width="1.2"/>
+                                            <!-- Ornement sommet droit -->
+                                            <line x1="53" y1="6" x2="53" y2="3" stroke-width="1.5"/>
+                                            <circle cx="53" cy="2.5" r="1" fill="white" fill-opacity="0.7"/>
+                                            <!-- Fenêtres tour droite -->
+                                            <path d="M 51 30 Q 51 28.5 53 28.5 Q 55 28.5 55 30 L 55 34 L 51 34 Z" fill="white" fill-opacity="0.35"/>
+                                            <path d="M 51 40 Q 51 38.5 53 38.5 Q 55 38.5 55 40 L 55 44 L 51 44 Z" fill="white" fill-opacity="0.35"/>
+                                            
+                                            <!-- Corps central -->
+                                            <rect x="16" y="30" width="32" height="30" rx="0.5" fill="white" fill-opacity="0.15"/>
+                                            
+                                            <!-- Toit central mansardé -->
+                                            <path d="M 14 30 L 24 18 L 32 14 L 40 18 L 50 30" fill="white" fill-opacity="0.2" stroke-width="1.2"/>
+                                            
+                                            <!-- Lucarne centrale -->
+                                            <path d="M 29 22 L 32 18 L 35 22" fill="white" fill-opacity="0.3" stroke-width="1"/>
+                                            <rect x="29.5" y="22" width="5" height="4" fill="white" fill-opacity="0.2"/>
+                                            <circle cx="32" cy="20.5" r="1" fill="white" fill-opacity="0.5"/>
+                                            
+                                            <!-- Grande porte arquée -->
+                                            <path d="M 28 46 Q 28 40 32 38 Q 36 40 36 46 L 36 60 L 28 60 Z" fill="white" fill-opacity="0.3"/>
+                                            <path d="M 28 46 Q 28 40 32 38 Q 36 40 36 46" fill="none" stroke-width="1.2"/>
+                                            <line x1="32" y1="38" x2="32" y2="60" stroke-width="0.4" opacity="0.5"/>
+                                            <circle cx="34" cy="50" r="0.6" fill="white"/>
+                                            
+                                            <!-- Fenêtres élégantes -->
+                                            <path d="M 20 36 Q 20 34.5 22 34.5 Q 24 34.5 24 36 L 24 42 L 20 42 Z" fill="white" fill-opacity="0.35"/>
+                                            <path d="M 40 36 Q 40 34.5 42 34.5 Q 44 34.5 44 36 L 44 42 L 40 42 Z" fill="white" fill-opacity="0.35"/>
+                                            <path d="M 20 48 Q 20 46.5 22 46.5 Q 24 46.5 24 48 L 24 54 L 20 54 Z" fill="white" fill-opacity="0.35"/>
+                                            <path d="M 40 48 Q 40 46.5 42 46.5 Q 44 46.5 44 48 L 44 54 L 40 54 Z" fill="white" fill-opacity="0.35"/>
+                                            
+                                            <!-- Ligne de sol avec herbe stylisée -->
+                                            <line x1="2" y1="60" x2="62" y2="60" stroke-width="1.2"/>
+                                            <path d="M 2 60 Q 4 58 6 60" fill="none" stroke-width="0.6" opacity="0.5"/>
+                                            <path d="M 58 60 Q 60 58 62 60" fill="none" stroke-width="0.6" opacity="0.5"/>
+                                            
+                                            <!-- Petits drapeaux élégants -->
+                                            <path d="M 11 3 L 11 1 Q 13 1.5 11 3" fill="white" fill-opacity="0.5" stroke-width="0.5"/>
+                                            <path d="M 53 3 L 53 1 Q 55 1.5 53 3" fill="white" fill-opacity="0.5" stroke-width="0.5"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="elegant-heading text-2xl font-semibold mb-1">Réception</p>
+                                        <p class="text-base md:text-lg font-light opacity-90">
+                                            Château de La Gruerie à 17h30
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-2">
+                                <p class="text-base md:text-lg font-light italic opacity-80 text-center">
                                     Tenue de soirée recommandée
                                 </p>
                             </div>
@@ -171,7 +288,7 @@
                     @click="activeTab = 'details'"
                     :class="activeTab === 'details' ? 'bg-white/30 text-white' : 'bg-white/10 text-white/70 hover:bg-white/20'"
                     class="px-6 py-2 rounded-lg transition-all duration-300 text-sm md:text-base font-medium tracking-wide backdrop-blur-glass shadow-lg">
-                    Détails
+                    Programme
                 </button>
                 <button 
                     @click="activeTab = 'accommodation'"
