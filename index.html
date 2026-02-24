@@ -311,29 +311,27 @@
                         x-transition:leave="transition ease-in duration-300"
                         x-transition:leave-start="opacity-100 transform translate-x-0"
                         x-transition:leave-end="opacity-0 transform -translate-x-full absolute inset-0"
-                        class="text-white"
-                        x-data="{
-                            iframeHeight: 500,
-                            init() {
-                                window.addEventListener('message', (e) => {
-                                    if (e.data && e.data.type === 'resize') {
-                                        this.iframeHeight = e.data.height;
-                                    }
-                                });
-                            }
-                        }">
-                        <div class="w-full px-2">
-                            <iframe 
-                                :src="$store.params.f"
-                                class="w-full rounded-lg"
-                                width="100%"
-                                :height="iframeHeight"
-                                frameborder="0" 
-                                marginheight="0" 
-                                marginwidth="0"
-                                scrolling="auto">
-                                Chargement…
-                            </iframe>
+                        class="text-white space-y-6">
+                        <div class="text-center">
+                            <h3 class="elegant-heading text-3xl md:text-4xl font-semibold mb-4">Réponse</h3>
+                            <div class="w-20 h-px bg-white mx-auto mb-6 opacity-50"></div>
+                        </div>
+                        <div class="space-y-6 text-center px-4">
+                            <p class="text-base md:text-lg font-light opacity-90">
+                                Merci de confirmer votre présence en remplissant ce formulaire
+                            </p>
+                            <div class="pt-2">
+                                <a 
+                                    :href="$store.params.f"
+                                    target="_blank"
+                                    class="inline-block bg-white/20 hover:bg-white/30 text-white px-8 py-3 rounded-full transition-all duration-300 text-base md:text-lg font-medium tracking-wide backdrop-blur-glass shadow-lg hover:shadow-xl transform hover:scale-105">
+                                    <span class="elegant-heading font-semibold">Répondre à l'invitation</span>
+                                    <span class="ml-2">→</span>
+                                </a>
+                                <p class="text-sm md:text-base font-light italic opacity-75 mt-4">
+                                    Réponse souhaitée avant fin avril
+                                </p>
+                            </div>
                         </div>
                     </div>
 
@@ -392,47 +390,47 @@
                 </div>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-2 mx-auto max-w-4xl mb-8">
+            <div class="flex flex-wrap justify-center gap-1.5 mx-auto max-w-5xl mb-8">
                 <button 
                     @click="activeTab = 'countdown'"
                     :class="activeTab === 'countdown' ? 'bg-white/30 text-white' : 'bg-white/10 text-white/70 hover:bg-white/20'"
-                    class="px-4 md:px-6 py-2 rounded-lg transition-all duration-300 text-sm md:text-base font-medium tracking-wide backdrop-blur-glass shadow-lg">
+                    class="px-3 md:px-4 py-2 rounded-lg transition-all duration-300 text-xs md:text-sm font-medium tracking-wide backdrop-blur-glass shadow-lg">
                     Accueil
                 </button>
                 <button 
                     @click="activeTab = 'details'"
                     :class="activeTab === 'details' ? 'bg-white/30 text-white' : 'bg-white/10 text-white/70 hover:bg-white/20'"
-                    class="px-4 md:px-6 py-2 rounded-lg transition-all duration-300 text-sm md:text-base font-medium tracking-wide backdrop-blur-glass shadow-lg">
+                    class="px-3 md:px-4 py-2 rounded-lg transition-all duration-300 text-xs md:text-sm font-medium tracking-wide backdrop-blur-glass shadow-lg">
                     Programme
+                </button>
+                <button 
+                    @click="activeTab = 'caterer'"
+                    :class="activeTab === 'caterer' ? 'bg-white/30 text-white' : 'bg-white/10 text-white/70 hover:bg-white/20'"
+                    class="px-3 md:px-4 py-2 rounded-lg transition-all duration-300 text-xs md:text-sm font-medium tracking-wide backdrop-blur-glass shadow-lg">
+                    Réponse
                 </button>
                 <button 
                     @click="activeTab = 'accommodation'"
                     :class="activeTab === 'accommodation' ? 'bg-white/30 text-white' : 'bg-white/10 text-white/70 hover:bg-white/20'"
-                    class="px-4 md:px-6 py-2 rounded-lg transition-all duration-300 text-sm md:text-base font-medium tracking-wide backdrop-blur-glass shadow-lg">
+                    class="px-3 md:px-4 py-2 rounded-lg transition-all duration-300 text-xs md:text-sm font-medium tracking-wide backdrop-blur-glass shadow-lg">
                     Hébergement
                 </button>
                 <button 
                     @click="activeTab = 'transport'"
                     :class="activeTab === 'transport' ? 'bg-white/30 text-white' : 'bg-white/10 text-white/70 hover:bg-white/20'"
-                    class="px-4 md:px-6 py-2 rounded-lg transition-all duration-300 text-sm md:text-base font-medium tracking-wide backdrop-blur-glass shadow-lg">
+                    class="px-3 md:px-4 py-2 rounded-lg transition-all duration-300 text-xs md:text-sm font-medium tracking-wide backdrop-blur-glass shadow-lg">
                     Transport
-                </button>
-                <button 
-                    @click="activeTab = 'caterer'"
-                    :class="activeTab === 'caterer' ? 'bg-white/30 text-white' : 'bg-white/10 text-white/70 hover:bg-white/20'"
-                    class="px-4 md:px-6 py-2 rounded-lg transition-all duration-300 text-sm md:text-base font-medium tracking-wide backdrop-blur-glass shadow-lg">
-                    Réponse
                 </button>
                 <button 
                     @click="activeTab = 'photos'"
                     :class="activeTab === 'photos' ? 'bg-white/30 text-white' : 'bg-white/10 text-white/70 hover:bg-white/20'"
-                    class="px-4 md:px-6 py-2 rounded-lg transition-all duration-300 text-sm md:text-base font-medium tracking-wide backdrop-blur-glass shadow-lg">
+                    class="px-3 md:px-4 py-2 rounded-lg transition-all duration-300 text-xs md:text-sm font-medium tracking-wide backdrop-blur-glass shadow-lg">
                     Photos
                 </button>
                 <button 
                     @click="activeTab = 'gift'"
                     :class="activeTab === 'gift' ? 'bg-white/30 text-white' : 'bg-white/10 text-white/70 hover:bg-white/20'"
-                    class="px-4 md:px-6 py-2 rounded-lg transition-all duration-300 text-sm md:text-base font-medium tracking-wide backdrop-blur-glass shadow-lg">
+                    class="px-3 md:px-4 py-2 rounded-lg transition-all duration-300 text-xs md:text-sm font-medium tracking-wide backdrop-blur-glass shadow-lg">
                     Cagnotte
                 </button>
             </div>

@@ -9,7 +9,7 @@ import base64
 import webbrowser
 
 LOCAL_URL = "http://127.0.0.1:5500/index.html"
-PROD_URL = "https://vincenthays.github.io/wedding/"
+PROD_URL = "https://vincenthays.github.io/wedding"
 
 with open("data.json", "r", encoding="utf-8") as f:
     data = json.load(f)
