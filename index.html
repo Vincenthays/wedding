@@ -10,7 +10,7 @@
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
-            background-image: url('background_v4.jpg');
+            background-image: url('img/background_v4.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -112,7 +112,7 @@
                             <h3 class="elegant-heading text-3xl md:text-4xl font-semibold mb-4">Programme</h3>
                             <div class="w-20 h-px bg-white mx-auto mb-6 opacity-50"></div>
                         </div>
-                        <div class="space-y-6">
+                        <div class="space-y-6" x-data="{ showDetails: false }">
                             <!-- Icônes avec descriptions -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
                                 <!-- Église -->
@@ -163,9 +163,9 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <p class="elegant-heading text-2xl font-semibold mb-1">Cérémonie</p>
+                                        <p class="elegant-heading text-2xl font-semibold mb-1">Église Notre-Dame de Béon</p>
                                         <p class="text-base md:text-lg font-light opacity-90">
-                                            Église Notre-Dame de Béon à 15h
+                                            15h00
                                         </p>
                                     </div>
                                 </div>
@@ -230,18 +230,67 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <p class="elegant-heading text-2xl font-semibold mb-1">Réception</p>
+                                        <p class="elegant-heading text-2xl font-semibold mb-1">Château de La Gruerie</p>
                                         <p class="text-base md:text-lg font-light opacity-90">
-                                            Château de La Gruerie à 17h30
+                                            à partir de 17h30
                                         </p>
                                     </div>
+                                    
+                                    <!-- Bouton Détails -->
+                                    <div class="pt-2">
+                                        <button 
+                                            @click="showDetails = !showDetails"
+                                            class="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-6 py-2.5 rounded-full transition-all duration-300 text-sm md:text-base font-medium tracking-wide backdrop-blur-glass shadow-lg hover:shadow-xl transform hover:scale-105">
+                                            <span class="elegant-heading font-semibold" x-text="showDetails ? 'Masquer les détails' : 'Voir les détails'"></span>
+                                            <svg 
+                                                xmlns="http://www.w3.org/2000/svg" 
+                                                class="h-4 w-4 transition-transform duration-300" 
+                                                :class="showDetails ? 'rotate-180' : ''" 
+                                                fill="none" 
+                                                viewBox="0 0 24 24" 
+                                                stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Détails de la soirée (collapsible) - dans la même colonne -->
+                                    <div 
+                                        x-show="showDetails"
+                                        x-collapse
+                                        class="space-y-4 flex flex-col items-center">
+                                        <div class="w-16 h-px bg-white mx-auto opacity-50"></div>
+                                        
+                                        <div class="space-y-4">
+                                            <!-- Cocktail -->
+                                            <div class="flex items-center gap-4">
+                                                <img src="img/cocktail.png" alt="Cocktail" class="h-12 w-12 flex-shrink-0 drop-shadow-lg object-contain">
+                                                <div class="text-left">
+                                                    <p class="elegant-heading text-xl md:text-2xl font-semibold">Cocktail</p>
+                                                    <p class="text-base md:text-lg font-light opacity-90">17h30</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Repas -->
+                                            <div class="flex items-center gap-4">
+                                                <img src="img/repas.png" alt="Repas" class="h-12 w-12 flex-shrink-0 drop-shadow-lg object-contain">
+                                                <div class="text-left">
+                                                    <p class="elegant-heading text-xl md:text-2xl font-semibold">Repas</p>
+                                                    <p class="text-base md:text-lg font-light opacity-90">20h30</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Soirée -->
+                                            <div class="flex items-center gap-4">
+                                                <img src="img/soiree.png" alt="Soirée" class="h-12 w-12 flex-shrink-0 drop-shadow-lg object-contain">
+                                                <div class="text-left">
+                                                    <p class="elegant-heading text-xl md:text-2xl font-semibold">Soirée</p>
+                                                    <p class="text-base md:text-lg font-light opacity-90">23h00</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <div class="pt-2">
-                                <p class="text-base md:text-lg font-light italic opacity-80 text-center">
-                                    Tenue de soirée recommandée
-                                </p>
                             </div>
                         </div>
                     </div>
