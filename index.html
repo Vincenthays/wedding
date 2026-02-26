@@ -424,7 +424,10 @@
                             </div>
                             <div class="pt-2">
                                 <p class="text-sm md:text-base font-light opacity-90">
-                                    IBAN : [À communiquer]
+                                    IBAN : <span x-text="$store.params.i"></span>
+                                </p>
+                                <p class="text-sm md:text-base font-light opacity-90">
+                                    BIC : <span x-text="$store.params.b"></span>
                                 </p>
                             </div>
                         </div>
