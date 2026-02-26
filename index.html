@@ -398,14 +398,99 @@
                             <h3 class="elegant-heading text-3xl md:text-4xl font-semibold mb-4">Photos</h3>
                             <div class="w-20 h-px bg-white mx-auto mb-6 opacity-50"></div>
                         </div>
-                        <div class="space-y-6 text-center px-4">
-                            <p class="text-base md:text-lg font-light opacity-90">
-                                Partagez vos plus beaux souvenirs de cette journée
-                            </p>
-                            <div class="pt-2">
-                                <p class="text-sm md:text-base font-light italic opacity-75">
-                                    L'album photo et le lien de partage seront disponibles après la célébration
-                                </p>
+                        
+                        <!-- Section 2 colonnes -->
+                        <div class="space-y-6" x-data="{ showPhotographeDetails: false, showInvitesDetails: false }">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+                                
+                                <!-- Colonne gauche - Photos Photographe -->
+                                <div class="text-center space-y-3">
+                                    <div class="mx-auto w-32 h-32 rounded-full overflow-hidden flex items-center justify-center mb-2">
+                                        <img src="img/photo_invites.png" alt="Photographe" class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <p class="elegant-heading text-2xl font-semibold mb-1">LA PHOTOGRAPHE</p>
+                                    </div>
+                                    
+                                    <!-- Bouton Détails -->
+                                    <div class="pt-2">
+                                        <button 
+                                            @click="showPhotographeDetails = !showPhotographeDetails"
+                                            class="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-6 py-2.5 rounded-full transition-all duration-300 text-sm md:text-base font-medium tracking-wide backdrop-blur-glass shadow-lg hover:shadow-xl transform hover:scale-105">
+                                            <span class="elegant-heading font-semibold" x-text="showPhotographeDetails ? 'Masquer les détails' : 'Voir les détails'"></span>
+                                            <svg 
+                                                xmlns="http://www.w3.org/2000/svg" 
+                                                class="h-4 w-4 transition-transform duration-300" 
+                                                :class="showPhotographeDetails ? 'rotate-180' : ''" 
+                                                fill="none" 
+                                                viewBox="0 0 24 24" 
+                                                stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Détails de la photographe (collapsible) -->
+                                    <div 
+                                        x-show="showPhotographeDetails"
+                                        x-collapse
+                                        class="space-y-4 flex flex-col items-center">
+                                        <div class="w-16 h-px bg-white mx-auto opacity-50"></div>
+                                        <p class="text-base md:text-lg font-light opacity-90">
+                                            Les photos réalisées par la photographe seront disponibles environ deux mois après le jour J. Vous pourrez y accéder via le lien suivant:
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Colonne droite - Photos Invités -->
+                                <div class="text-center space-y-3">
+                                    <div class="mx-auto w-32 h-32 rounded-full overflow-hidden flex items-center justify-center mb-2">
+                                        <img src="img/photo_pro.png" alt="Vos Photos" class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <p class="elegant-heading text-2xl font-semibold mb-1">VOS PHOTOS</p>
+                                    </div>
+                                    
+                                    <!-- Bouton Détails -->
+                                    <div class="pt-2">
+                                        <button 
+                                            @click="showInvitesDetails = !showInvitesDetails"
+                                            class="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-6 py-2.5 rounded-full transition-all duration-300 text-sm md:text-base font-medium tracking-wide backdrop-blur-glass shadow-lg hover:shadow-xl transform hover:scale-105">
+                                            <span class="elegant-heading font-semibold" x-text="showInvitesDetails ? 'Masquer les détails' : 'Voir les détails'"></span>
+                                            <svg 
+                                                xmlns="http://www.w3.org/2000/svg" 
+                                                class="h-4 w-4 transition-transform duration-300" 
+                                                :class="showInvitesDetails ? 'rotate-180' : ''" 
+                                                fill="none" 
+                                                viewBox="0 0 24 24" 
+                                                stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Détails des photos invités (collapsible) -->
+                                    <div 
+                                        x-show="showInvitesDetails"
+                                        x-collapse
+                                        class="space-y-4 flex flex-col items-center">
+                                        <div class="w-16 h-px bg-white mx-auto opacity-50"></div>
+                                        <div class="text-base md:text-lg font-light opacity-90 text-left space-y-3">
+                                            <p>
+                                                Nous serions heureux de recueillir les photos que vous seriez amenés à prendre lors des festivités !
+                                            </p>
+                                            <p>Pour cela, il vous suffit de :</p>
+                                            <ol class="list-decimal list-inside space-y-2 pl-2">
+                                                <li>Télécharger l'application ZeliPop sur votre téléphone</li>
+                                                <li>Renseigner le code de l'évènement "MARIAGEMCCM" et le mot de passe "MCCM" (cf. image ci-dessous)</li>
+                                            </ol>
+                                            <p>
+                                                Cette application mobile gratuite vous permet de partager en temps réel vos photos dans une galerie avec l'ensemble des invités et des mariés. Vous avez également la possibilité d'accompagner vos photos de courts messages.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
