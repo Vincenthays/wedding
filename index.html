@@ -28,6 +28,7 @@
     </style>
     <script src="//cdn.jsdelivr.net/npm/@tailwindcss/browser@4" defer></script>
     <script src="script.js" defer></script>
+    <script src="//unpkg.com/@alpinejs/collapse" defer></script>
     <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center relative">
@@ -163,7 +164,7 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <p class="elegant-heading text-2xl font-semibold mb-1">Église Notre-Dame de Béon</p>
+                                        <p class="elegant-heading text-2xl font-semibold mb-1" x-text="$store.params.d.c"></p>
                                         <p class="text-base md:text-lg font-light opacity-90">
                                             15h00
                                         </p>
@@ -230,7 +231,7 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <p class="elegant-heading text-2xl font-semibold mb-1">Château de La Gruerie</p>
+                                        <p class="elegant-heading text-2xl font-semibold mb-1" x-text="$store.params.d.r"></p>
                                         <p class="text-base md:text-lg font-light opacity-90">
                                             à partir de 17h30
                                         </p>
