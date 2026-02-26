@@ -1,5 +1,5 @@
 // Decode data from URL parameter
-const params = JSON.parse(atob(window.location.search.substring(1)));
+const params = JSON.parse(atob(window.location.hash.substring(1)));
 
 // Initialize Alpine.js store with wedding data
 document.addEventListener('alpine:init', () => {
