@@ -43,18 +43,18 @@
         <p 
             class="text-xl md:text-2xl text-white mb-4 font-light tracking-wider" 
             style="text-shadow: 1px 2px 4px rgba(0,0,0,0.4);" 
-            x-text="date"
             x-data="{
-                init() {
+                get formattedDate() {
                     const d = $store.params.date;
                     const date = d.getDate();
                     const month = d.toLocaleDateString('fr-FR', { month: 'long' });
                     const year = d.getFullYear();
                     const hours = d.getHours().toString().padStart(2, '0');
                     const minutes = d.getMinutes().toString().padStart(2, '0');
-                    this.date = `${date} ${month} ${year} • ${hours}h${minutes}`;
+                    return `${date} ${month} ${year} • ${hours}h${minutes}`;
                 }
-            }">
+            }"
+            x-text="formattedDate">
         </p>
         
         <div x-data="{ activeTab: 'countdown' }">
