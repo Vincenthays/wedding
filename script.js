@@ -60,19 +60,9 @@ document.addEventListener('alpine:init', async () => {
     
     const resp = await fetch('data.txt');
     const text = await resp.text();
-    
-    // The URL contains the normalized phrase - use it directly
     const secret = window.location.hash.substring(1);        
     const data = await decryptData(text, secret);
-    
-    // Decode base64 to bytes, then decode UTF-8 properly
-    const binaryString = atob(data);
-    const bytes = new Uint8Array(binaryString.length);
-    for (let i = 0; i < binaryString.length; i++) {
-        bytes[i] = binaryString.charCodeAt(i);
-    }
-    const jsonString = new TextDecoder('utf-8').decode(bytes);
-    const params = JSON.parse(jsonString);
+    const params = JSON.parse(atob(data));
     console.log(params);
 
     Alpine.store('params', { ...params, date: new Date(params.t) });
