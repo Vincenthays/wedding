@@ -34,18 +34,28 @@
 <body class="min-h-screen flex flex-col items-center justify-center relative">
     
     <div class="relative z-10 text-center px-4 max-w-5xl">
-        <h1 class="elegant-heading text-7xl md:text-8xl text-white font-light mb-4 tracking-wide animate-fade-in" 
-            style="text-shadow: 2px 4px 8px rgba(0,0,0,0.4);" 
-            x-data="{
-                updateMessage() {
-                    this.message = $store.params.m || '';
+        <div x-data="{
+                title1: '',
+                title2: '',
+                updateTitles() {
+                    this.title1 = $store.params.t1 || '';
+                    this.title2 = $store.params.t2 || '';
                 },
                 init() {
-                    this.$watch('$store.params.m', () => this.updateMessage());
+                    this.$watch('$store.params.t1', () => this.updateTitles());
+                    this.$watch('$store.params.t2', () => this.updateTitles());
+                    this.updateTitles();
                 }
-            }"
-            x-text="message">
-        </h1>
+            }">
+            <h1 class="elegant-heading text-5xl md:text-6xl text-white font-light mb-2 tracking-wide animate-fade-in" 
+                style="text-shadow: 2px 4px 8px rgba(0,0,0,0.4);" 
+                x-text="title1">
+            </h1>
+            <h1 class="elegant-heading text-5xl md:text-6xl text-white font-light mb-4 tracking-wide animate-fade-in" 
+                style="text-shadow: 2px 4px 8px rgba(0,0,0,0.4);" 
+                x-text="title2">
+            </h1>
+        </div>
         
         <div class="w-32 h-px bg-white mx-auto mb-8 opacity-70"></div>
         
