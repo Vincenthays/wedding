@@ -39,11 +39,12 @@ async function decryptData(ciphertextB64, secret) {
   const secretHash = await crypto.subtle.digest('SHA-256', secretBytes);
   const secretDigest = new Uint8Array(secretHash);
   
-  const salt = secretDigest.slice(0, 16);      // bytes [0, 16)
-  const iv = secretDigest.slice(16, 28);       // bytes [16, 28)
-  const password = secretDigest.slice(28);     // bytes [28, end)
+  const salt = secretDigest.slice(0, 16);
+  const iv = secretDigest.slice(16, 28);
+  const iterations = secretDigest.slice(28, 31).reduce((a, b) => (a << 8) | b, 0);
+  const password = secretDigest.slice(28);
 
-  const key = await deriveKey(password, salt, 100000);
+  const key = await deriveKey(password, salt, iterations);
 
   const decrypted = await crypto.subtle.decrypt(
     { name: 'AES-GCM', iv },
