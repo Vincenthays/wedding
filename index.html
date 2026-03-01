@@ -79,10 +79,7 @@
                             },
                             init() {
                                 // Watch for changes in the store
-                                this.$watch('$store.params.date', () => this.updateCountdown());
-                                
-                                // Start the interval
-                                this.updateCountdown();
+                                this.$watch('$store.params.date', this.updateCountdown);
                                 this.interval = setInterval(() => this.updateCountdown(), 1000);
                             }
                         }">
