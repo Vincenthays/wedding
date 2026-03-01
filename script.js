@@ -56,7 +56,7 @@ async function decryptData(ciphertextB64, secret) {
 }
 
 document.addEventListener('alpine:init', async () => {
-    Alpine.store('params', { date: new Date() });
+    Alpine.store('params', {});
     
     const resp = await fetch('data.txt');
     const text = await resp.text();
