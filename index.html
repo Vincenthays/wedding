@@ -99,9 +99,10 @@
                                 this.seconds = Math.floor((diff % (1000 * 60)) / 1000);
                             },
                             init() {
-                                // Watch for changes in the store
-                                this.$watch('$store.params.date', this.updateCountdown);
-                                this.interval = setInterval(() => this.updateCountdown(), 1000);
+                                this.$watch('$store.params.date', () => {
+                                    this.updateCountdown();
+                                    this.interval = setInterval(() => this.updateCountdown(), 1000);
+                                });   
                             }
                         }">
                         <div class="text-center">
