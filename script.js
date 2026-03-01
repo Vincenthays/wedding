@@ -50,7 +50,8 @@ document.addEventListener('alpine:init', async () => {
     const ciphertext = await resp.arrayBuffer();
     const secret = window.location.hash.substring(1);        
     const data = await decryptData(ciphertext, secret);
-    const params = JSON.parse(new TextDecoder('utf-8').decode(data));
+    const decoder = new TextDecoder('utf-8');
+    const params = JSON.parse(decoder.decode(data));
     console.log(params);
 
     Alpine.store('params', { ...params, date: new Date(params.t) });
