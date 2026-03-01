@@ -34,8 +34,17 @@
 <body class="min-h-screen flex flex-col items-center justify-center relative">
     
     <div class="relative z-10 text-center px-4 max-w-5xl">
-        <h1 class="elegant-heading text-7xl md:text-8xl text-white font-light mb-4 tracking-wide animate-fade-in" style="text-shadow: 2px 4px 8px rgba(0,0,0,0.4);">
-            Nous nous marions !
+        <h1 class="elegant-heading text-7xl md:text-8xl text-white font-light mb-4 tracking-wide animate-fade-in" 
+            style="text-shadow: 2px 4px 8px rgba(0,0,0,0.4);" 
+            x-data="{
+                updateMessage() {
+                    this.message = $store.params.m || '';
+                },
+                init() {
+                    this.$watch('$store.params.m', () => this.updateMessage());
+                }
+            }"
+            x-text="message">
         </h1>
         
         <div class="w-32 h-px bg-white mx-auto mb-8 opacity-70"></div>
