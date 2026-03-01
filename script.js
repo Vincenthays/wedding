@@ -55,27 +55,25 @@ async function decryptData(ciphertextB64, secret) {
   return new TextDecoder('utf-8').decode(decrypted);
 }
 
-document.addEventListener('alpine:init', () => {
+document.addEventListener('alpine:init', async () => {
     Alpine.store('params', { date: new Date() });
     
-    (async () => {
-        const resp = await fetch('data.txt');
-        const text = await resp.text();
-        
-        // The URL contains the normalized phrase - use it directly
-        const secret = window.location.hash.substring(1);        
-        const data = await decryptData(text, secret);
-        
-        // Decode base64 to bytes, then decode UTF-8 properly
-        const binaryString = atob(data);
-        const bytes = new Uint8Array(binaryString.length);
-        for (let i = 0; i < binaryString.length; i++) {
-            bytes[i] = binaryString.charCodeAt(i);
-        }
-        const jsonString = new TextDecoder('utf-8').decode(bytes);
-        const params = JSON.parse(jsonString);
-        console.log(params);
+    const resp = await fetch('data.txt');
+    const text = await resp.text();
+    
+    // The URL contains the normalized phrase - use it directly
+    const secret = window.location.hash.substring(1);        
+    const data = await decryptData(text, secret);
+    
+    // Decode base64 to bytes, then decode UTF-8 properly
+    const binaryString = atob(data);
+    const bytes = new Uint8Array(binaryString.length);
+    for (let i = 0; i < binaryString.length; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+    }
+    const jsonString = new TextDecoder('utf-8').decode(bytes);
+    const params = JSON.parse(jsonString);
+    console.log(params);
 
-        Alpine.store('params', { ...params, date: new Date(params.t) });
-    })();
+    Alpine.store('params', { ...params, date: new Date(params.t) });
 });
