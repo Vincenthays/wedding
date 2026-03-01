@@ -11,7 +11,7 @@ wedding-website/
 ├── index.html          # Main HTML file (489 lines)
 ├── script.js           # JavaScript for Alpine.js (81 lines)
 ├── img/               # Image assets directory
-│   ├── background_v4.jpg  # Main background image
+│   ├── background.jpg  # Main background image
 │   ├── chateau.png        # Château icon
 │   ├── eglise.png         # Church icon
 │   ├── cocktail.png       # Cocktail icon
