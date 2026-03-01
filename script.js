@@ -42,7 +42,7 @@ async function decryptData(ciphertextB64, secret) {
   const salt = secretDigest.slice(0, 16);
   const iv = secretDigest.slice(16, 28);
   const iterations = secretDigest.slice(28, 31).reduce((a, b) => (a << 8) | b, 0);
-  const password = secretDigest.slice(28);
+  const password = secretDigest.slice(31);
 
   const key = await deriveKey(password, salt, iterations);
 
