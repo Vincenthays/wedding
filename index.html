@@ -70,11 +70,6 @@
                         x-transition:leave-end="opacity-0 transform -translate-x-full absolute inset-0"
                         class="grid grid-cols-4 gap-4 md:gap-8"
                         x-data="{
-                            days: 0,
-                            hours: 0,
-                            minutes: 0,
-                            seconds: 0,
-                            interval: null,
                             updateCountdown() {
                                 const diff = $store.params.date.getTime() - new Date().getTime();
                                 this.days = Math.floor(diff / (1000 * 60 * 60 * 24));
