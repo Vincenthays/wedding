@@ -346,7 +346,7 @@
                                     <!-- Bouton Détails -->
                                     <div class="pt-2">
                                         <button 
-                                            @click="showPhotographeDetails = !showPhotographeDetails; showInvitesDetails = false"
+                                            @click="showPhotographeDetails = !showPhotographeDetails; showInvitesDetails = false; if(showPhotographeDetails) { setTimeout(() => $refs.photographeDetails.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100) }"
                                             class="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-6 py-2.5 rounded-full transition-all duration-300 text-sm md:text-base font-medium tracking-wide backdrop-blur-glass shadow-lg hover:shadow-xl transform hover:scale-105">
                                             <span class="elegant-heading font-semibold" x-text="showPhotographeDetails ? 'Masquer les détails' : 'Voir les détails'"></span>
                                             <svg 
@@ -374,7 +374,7 @@
                                     <!-- Bouton Détails -->
                                     <div class="pt-2">
                                         <button 
-                                            @click="showInvitesDetails = !showInvitesDetails; showPhotographeDetails = false"
+                                            @click="showInvitesDetails = !showInvitesDetails; showPhotographeDetails = false; if(showInvitesDetails) { setTimeout(() => $refs.invitesDetails.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100) }"
                                             class="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-6 py-2.5 rounded-full transition-all duration-300 text-sm md:text-base font-medium tracking-wide backdrop-blur-glass shadow-lg hover:shadow-xl transform hover:scale-105">
                                             <span class="elegant-heading font-semibold" x-text="showInvitesDetails ? 'Masquer les détails' : 'Voir les détails'"></span>
                                             <svg 
@@ -396,6 +396,7 @@
                             <div class="px-4">
                                 <!-- Détails de la photographe (collapsible) -->
                                 <div 
+                                    x-ref="photographeDetails"
                                     x-show="showPhotographeDetails"
                                     x-collapse
                                     class="space-y-4 flex flex-col items-center">
@@ -411,6 +412,7 @@
                                 
                                 <!-- Détails des photos invités (collapsible) -->
                                 <div 
+                                    x-ref="invitesDetails"
                                     x-show="showInvitesDetails"
                                     x-collapse
                                     class="space-y-4 flex flex-col items-center">
