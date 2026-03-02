@@ -63,25 +63,26 @@
             </h1>
         </div>
         
-        <p 
-            class="text-xl md:text-2xl text-white mb-4 font-light tracking-wider" 
-            style="text-shadow: 1px 2px 4px rgba(0,0,0,0.4);" 
-            x-data="{
-                updateDate() {
-                    const d = $store.params.date;
-                    const date = d.getDate();
-                    const month = d.toLocaleDateString('fr-FR', { month: 'long' });
-                    const year = d.getFullYear();
-                    this.formattedDate = `${date} ${month} ${year}`;
-                },
-                init() {
-                    this.$watch('$store.params.date', () => this.updateDate());
-                }
-            }"
-            x-text="formattedDate">
-        </p>
-        
         <div x-data="{ activeTab: 'countdown' }">
+            <p 
+                x-show="activeTab === 'countdown'"
+                class="text-xl md:text-2xl text-white mb-4 font-light tracking-wider" 
+                style="text-shadow: 1px 2px 4px rgba(0,0,0,0.4);" 
+                x-data="{
+                    updateDate() {
+                        const d = $store.params.date;
+                        const date = d.getDate();
+                        const month = d.toLocaleDateString('fr-FR', { month: 'long' });
+                        const year = d.getFullYear();
+                        this.formattedDate = `${date} ${month} ${year}`;
+                    },
+                    init() {
+                        this.$watch('$store.params.date', () => this.updateDate());
+                    }
+                }"
+                x-text="formattedDate">
+            </p>
+        
             <div class="backdrop-blur-glass rounded-2xl p-6 md:p-8 shadow-2xl mb-6 mx-auto max-w-3xl transition-all duration-300">
                 <div class="relative overflow-hidden transition-all duration-300">
                     <div 
