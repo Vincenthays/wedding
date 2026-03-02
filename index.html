@@ -74,9 +74,7 @@
                     const date = d.getDate();
                     const month = d.toLocaleDateString('fr-FR', { month: 'long' });
                     const year = d.getFullYear();
-                    const hours = d.getHours().toString().padStart(2, '0');
-                    const minutes = d.getMinutes().toString().padStart(2, '0');
-                    this.formattedDate = `${date} ${month} ${year} • ${hours}h${minutes}`;
+                    this.formattedDate = `${date} ${month} ${year}`;
                 },
                 init() {
                     this.$watch('$store.params.date', () => this.updateDate());
