@@ -186,7 +186,7 @@
                                     <div class="pt-2">
                                         <button 
                                             @click="showDetails = !showDetails; if(showDetails) { setTimeout(() => $refs.programDetails.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100) }"
-                                            class="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-3 rounded-full transition-all duration-300 text-base md:text-lg font-medium tracking-wide backdrop-blur-glass shadow-lg hover:shadow-xl transform hover:scale-105">
+                                            class="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-6 py-2.5 rounded-full transition-all duration-300 text-sm md:text-base font-medium tracking-wide backdrop-blur-glass shadow-lg hover:shadow-xl transform hover:scale-105">
                                             <span class="elegant-heading font-semibold" x-text="showDetails ? 'Masquer les détails' : 'Voir les détails'"></span>
                                             <svg 
                                                 xmlns="http://www.w3.org/2000/svg" 
