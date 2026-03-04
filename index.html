@@ -57,15 +57,12 @@
     
     <div class="relative z-10 text-center px-4 max-w-5xl">
         <div x-data="{
-                title1: '',
-                title2: '',
                 updateTitles() {
-                    this.title1 = $store.params.t1 || '';
-                    this.title2 = $store.params.t2 || '';
+                    this.title1 = $store.params.t1;
+                    this.title2 = $store.params.t2;
                 },
                 init() {
-                    this.$watch('$store.params.t1', () => this.updateTitles());
-                    this.$watch('$store.params.t2', () => this.updateTitles());
+                    this.$watch('$store.params', () => this.updateTitles());
                 }
             }">
             <h1 class="elegant-heading text-5xl md:text-6xl text-white font-light mb-2 tracking-wide animate-fade-in" 
