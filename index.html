@@ -201,7 +201,19 @@
                         </div>
                         <div class="space-y-6" x-data="{ showDetails: false }">
                             <!-- Icônes avec descriptions -->
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-4"
+                                x-data="{
+                                    init() {
+                                        this.$watch('$store.params.date', () => {
+                                            const d = $store.params.date;
+                                            const date = d.getDate();
+                                            const month = d.toLocaleDateString('fr-FR', { month: 'long' });
+                                            const formattedDate = `${date} ${month}`;
+                                            this.t1 = `${formattedDate} à 15h00`;
+                                            this.t2 = `${formattedDate} à 17h30`;
+                                        });
+                                    }
+                                }">
                                 <!-- Église -->
                                 <div class="text-center space-y-3">
                                     <div class="mx-auto max-w-[200px] flex items-center justify-center">
@@ -209,7 +221,7 @@
                                     </div>
                                     <div>
                                         <p class="elegant-heading text-2xl font-semibold mb-1" x-text="$store.params.p1"></p>
-                                        <p class="text-base md:text-lg">15h00</p>
+                                        <p class="text-base md:text-lg" x-text="t1"></p>
                                     </div>
                                 </div>
                                 
@@ -220,7 +232,7 @@
                                     </div>
                                     <div>
                                         <p class="elegant-heading text-2xl font-semibold mb-1" x-text="$store.params.p2"></p>
-                                        <p class="text-base md:text-lg">17h30</p>
+                                        <p class="text-base md:text-lg" x-text="t2">17h30</p>
                                     </div>
                                     
                                     <!-- Bouton Détails -->
