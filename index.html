@@ -459,6 +459,21 @@
                                             </svg>
                                         </button>
                                     </div>
+                                    
+                                    <!-- Détails sous le bouton (mobile uniquement) -->
+                                    <div 
+                                        x-show="showPhotographeDetails"
+                                        x-collapse
+                                        class="md:hidden pt-4">
+                                        <div class="text-base text-center space-y-3">
+                                            <p>
+                                                Les photos réalisées par la photographe seront disponibles via le lien suivant 
+                                            </p>
+                                            <p class="italic">
+                                                Lien coming soon
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                                 
                                 <!-- Colonne droite - Photos Invités -->
@@ -487,12 +502,30 @@
                                             </svg>
                                         </button>
                                     </div>
+                                    
+                                    <!-- Détails sous le bouton (mobile uniquement) -->
+                                    <div 
+                                        x-show="showInvitesDetails"
+                                        x-collapse
+                                        class="md:hidden pt-4">
+                                        <div class="text-base text-center space-y-3">
+                                            <p>
+                                                Pour la cérémonie à l'église, nous vous invitons à laisser vos téléphones de côté afin de vivre pleinement ce moment, ensemble. Une photographe sera là pour immortaliser ces instants précieux, et nous partagerons les images avec vous.
+                                            </p>
+                                            <p>
+                                                Pour le reste de la journée, nous serons ravis de découvrir les photos que vous prendrez lors des festivités !
+                                            </p>
+                                            <p class="italic">
+                                                Lien coming soon
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                                 
                             </div>
                             
-                            <!-- Détails partagés - en dehors de la grille pour occuper toute la largeur -->
-                            <div class="px-4">
+                            <!-- Détails partagés - en dehors de la grille (desktop uniquement) -->
+                            <div class="hidden md:block px-4">
                                 <!-- Détails de la photographe (collapsible) -->
                                 <div 
                                     x-ref="photographeDetails"
