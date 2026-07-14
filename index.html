@@ -467,37 +467,15 @@
                                         <p class="elegant-heading text-2xl font-semibold mb-1 whitespace-nowrap">LA PHOTOGRAPHE</p>
                                     </div>
                                     
-                                    <!-- Bouton Détails -->
+                                    <!-- Bouton Lien -->
                                     <div class="pt-2">
-                                        <button 
-                                            @click="showPhotographeDetails = !showPhotographeDetails; showInvitesDetails = false; if(showPhotographeDetails) { setTimeout(() => $refs.photographeDetails.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100) }"
-                                            class="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-6 py-2.5 rounded-full text-sm md:text-base backdrop-blur-glass hover:scale-105">
-                                            <span class="elegant-heading font-semibold" x-text="showPhotographeDetails ? 'Masquer les détails' : 'Voir les détails'"></span>
-                                            <svg 
-                                                xmlns="http://www.w3.org/2000/svg" 
-                                                class="h-4 w-4" 
-                                                :class="showPhotographeDetails ? 'rotate-180' : ''" 
-                                                fill="none" 
-                                                viewBox="0 0 24 24" 
-                                                stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                        <a :href="$store.params.pp" target="_blank"
+                                            class="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-6 py-2.5 rounded-full text-sm md:text-base backdrop-blur-glass hover:scale-105 transition-all">
+                                            <span class="elegant-heading font-semibold">Voir les photos</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                             </svg>
-                                        </button>
-                                    </div>
-                                    
-                                    <!-- Détails sous le bouton (mobile uniquement) -->
-                                    <div 
-                                        x-show="showPhotographeDetails"
-                                        x-collapse
-                                        class="md:hidden pt-4">
-                                        <div class="text-base text-center space-y-3">
-                                            <p>
-                                                Les photos réalisées par la photographe seront disponibles via le lien suivant :
-                                            </p>
-                                            <p class="italic">
-                                                Lien coming soon
-                                            </p>
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
                                 
@@ -543,25 +521,6 @@
                                     </div>
                                 </div>
                                 
-                            </div>
-                            
-                            <!-- Détails partagés - en dehors de la grille (desktop uniquement) -->
-                            <div class="hidden md:block px-4">
-                                <!-- Détails de la photographe (collapsible) -->
-                                <div 
-                                    x-ref="photographeDetails"
-                                    x-show="showPhotographeDetails"
-                                    x-collapse
-                                    class="space-y-4 flex flex-col items-center">
-                                    <div class="text-base md:text-lg text-center space-y-3">
-                                        <p>
-                                            Les photos réalisées par la photographe seront disponibles via le lien suivant :
-                                        </p>
-                                        <p class="italic">
-                                            Lien coming soon
-                                        </p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
